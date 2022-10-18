@@ -13,7 +13,7 @@ import {
 export default function ProtectedRoute({children}){
   const {user,isAuth}=useSelector((state) => state.auth);
   console.log(user);
-    if(!isAuth){
+    if(!isAuth && !user){
         return <Navigate to="/" />;
     }
     else if(isAuth && !user.activated ){

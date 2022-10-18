@@ -35,7 +35,7 @@ class TokenService {
 
   async findRefToken(userId, refreshToken) {
     const token = await refresh_model.findOne({
-      _id: userId,
+      userId: userId,
       token: refreshToken
     })
     return token;
@@ -49,6 +49,12 @@ class TokenService {
     )
   }
 
+  async removeToken(refreshToken){
+    await refresh_model.deleteOne({
+      token: refreshToken
+    })
+  }
+  
 }
 
 module.exports = new TokenService();

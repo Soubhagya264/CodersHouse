@@ -16,6 +16,9 @@ const Otp = () => {
 
   const submit=async () => {
    try{
+    if(!otp || !phone){
+      return;
+    }
        const {data} =await verifyOtp({
         'otp':otp,'phone':phone,'hash':hash
        });

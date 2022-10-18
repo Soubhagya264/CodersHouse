@@ -123,7 +123,7 @@ class AuthController {
 
         // update refresh token
         try{
-            await tokenService.updateRefreshToken(user._id,refreshToken);
+            await tokenService.updateRefreshToken(userData._id,refreshToken);
         }
         catch (e){
             res.status(500).json({ message: "Internal Error." });
@@ -140,6 +140,14 @@ class AuthController {
         const userDto = new UserDto(user);
         res.json({ "user": userDto, auth: true });
 
+    }
+
+    async logout(req, res){
+        const {refreshToken}=req.cookies;
+        await tokenService.removeToken(refreshToken)
+        res.clearCookie('refreshToken');
+        res.clearCookie('accessToken');
+        res.json({user:null, auth:false});
     }
 
 }

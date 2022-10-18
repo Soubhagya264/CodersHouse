@@ -13,7 +13,6 @@ const PhoneEmail = ({onNext}) => {
   const Component= phoneEmailMap[type];
   return (
     <>
-
     <div className={styles.cardWrapper}>
     <div>
        <div className={styles.buttonWrapper}>
@@ -24,9 +23,7 @@ const PhoneEmail = ({onNext}) => {
        </div>
        <Component onNext={onNext}/>
        </div>
-    </div>
-     
-      
+    </div>  
     </>
   )
 }
